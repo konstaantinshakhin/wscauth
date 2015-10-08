@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="wscauth:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="wscauth.war">
+      <element id="artifact" artifact-name="wscauth:war exploded" />
+    </root>
+  </artifact>
+</component>

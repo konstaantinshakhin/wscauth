@@ -1,4 +1,4 @@
-package ru.shakhin.wscauth.service;
+package ru.shakhin.wscauth.model;
 
 import ru.shakhin.wscauth.model.Message;
 

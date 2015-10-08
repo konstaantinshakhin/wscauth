@@ -1,8 +1,8 @@
 package ru.shakhin.wscauth.websocket;
 
 import ru.shakhin.wscauth.model.Message;
-import ru.shakhin.wscauth.service.MessageDecoder;
-import ru.shakhin.wscauth.service.MessageEncoder;
+import ru.shakhin.wscauth.model.MessageDecoder;
+import ru.shakhin.wscauth.model.MessageEncoder;
 
 import java.io.IOException;
 import java.util.Collections;

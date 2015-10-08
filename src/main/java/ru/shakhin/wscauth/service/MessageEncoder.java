@@ -1,4 +1,6 @@
-package ru.shakhin.wscauth;
+package ru.shakhin.wscauth.service;
+
+import ru.shakhin.wscauth.model.Message;
 
 import javax.json.Json;
 import javax.json.JsonObject;

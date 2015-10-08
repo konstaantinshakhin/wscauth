@@ -1,7 +1,10 @@
-package ru.shakhin.wscauth;
+package ru.shakhin.wscauth.websocket;
+
+import ru.shakhin.wscauth.model.Message;
+import ru.shakhin.wscauth.service.MessageDecoder;
+import ru.shakhin.wscauth.service.MessageEncoder;
 
 import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package ru.shakhin.wscauth;
+package ru.shakhin.wscauth.model;
 
 public class Message {
 

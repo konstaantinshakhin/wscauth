@@ -23,6 +23,7 @@ public class UserDAO {
 
     final static String INSERTUSER = "Insert into USERS (MAIL,PASSWORD) values (?,?)";
     final static String SELECTUSERBYEMAIL = "Select from users where email = ?";
+    final static String SELECTPASSWORDBYEMAIL = "Select * from users where email = ?";
 
     public static void createUser(String email, String password) {
         DataSource ds = null;
@@ -65,7 +66,7 @@ public class UserDAO {
 
             while(rs.next()){
                  user = new User();
-                user.setEmail(rs.getString("MAIL"));
+                user.setEmail(rs.getString("EMAIL"));
                 user.setPassword(rs.getString("PASSWORD"));
 
                 System.out.println(" "+user.getEmail());
@@ -83,6 +84,37 @@ public class UserDAO {
             }
         }
         return user;
+
+    }
+    public static String getPasswordByMail(String email)  {
+        DataSource ds = null;
+        ds = FactoryDAO.getOracleDataSource();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String password = null;
+        try {
+            con = ds.getConnection();
+            pstmt = con.prepareStatement(SELECTUSERBYEMAIL);
+            pstmt.setString(1,email);
+            rs = pstmt.executeQuery();
+
+            if(rs.next()){
+                password = rs.getString("PASSWORD");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            try {
+                if(rs != null) rs.close();
+                if(pstmt != null) pstmt.close();
+                if(con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return password;
 
     }
 }

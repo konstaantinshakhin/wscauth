@@ -30,10 +30,23 @@ function writeToScreen(message) {
 
 function onMessage(event) {
     var json = JSON.parse(event.data);
-    document.getElementById('messages').innerHTML
-        = '<br />Received server response!'
-        + '<br />Subject: ' + json.type
-        + '<br />Content: ' + json.sequence_id;
+    if(json.type =='CUSTOMER_API_TOKEN') {
+        document.getElementById('messages').innerHTML
+            = '<br />Received server response!'
+            + '<br />Type: ' + json.type
+            + '<br />SequenceId: ' + json.sequence_id
+            + '<br />api_token: ' + json.data.api_token
+            + '<br />api_token_expiration_date: '+ json.data.api_token_expiration_date ;
+    }
+    if(json.type =='CUSTOMER_ERROR') {
+        document.getElementById('messages').innerHTML
+            = '<span style="color: red;">'
+            + '<br />Received server response!'
+            + '<br />Type: ' + json.type
+            + '<br />SequenceId: ' + json.sequence_id
+            + '<br />error_code: ' + json.data.error_code
+            + '<br />error_description: '+ json.data.error_description;
+    }
 }
 
 function onOpen() {

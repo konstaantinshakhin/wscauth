@@ -20,17 +20,19 @@ public class UserTokenService {
         userDAO = new UserDAO();
         tokenDAO = new TokenDAO();
     }
-    public  boolean SaveUserToken(String email , String password, String token ){
-        if(password == null & userDAO.getUserByMail(email) != null){
-            tokenDAO.createToken(email,token,new Date());
-            return true;
+    public  Token SaveUserToken(String email , String password ){
+        Token token = null;
+        if( (userDAO.getUserByMail(email) != null) && password.equals(userDAO.getPasswordByMail(email))){
+            token = new Token();
+            tokenDAO.createToken(email,token.getToken(),token.getDate());
+
         }
-        else if(password != null & userDAO.getUserByMail(email) == null){
-            userDAO.createUser(email,password);
-            tokenDAO.createToken(email,token,new Date());
-            return true;
-        }
-            return false;
+//        else if(password != null & userDAO.getUserByMail(email) == null){
+//            userDAO.createUser(email,password);
+//            tokenDAO.createToken(email,token,new Date());
+//            return true;
+//        }
+        return token;
 
     }
     public User getUserByEmail(String email){

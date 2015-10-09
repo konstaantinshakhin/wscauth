@@ -10,8 +10,12 @@ import java.util.UUID;
  */
 public class Token {
     private String token;
-    private Date Date;
+    private Date date;
     private String email;
+    public Token(){
+        token = UUID.randomUUID().toString();
+        date = new Date();
+    }
     public static void main(String[] args){
         for(int i = 0;i<5;i++) {
             String uuid = UUID.randomUUID().toString();
@@ -29,11 +33,11 @@ public class Token {
     }
 
     public Date getDate() {
-        return Date;
+        return date;
     }
 
     public void setDate(Date date) {
-        Date = date;
+        this.date = date;
     }
 
     public String getEmail() {

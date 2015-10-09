@@ -1,8 +1,6 @@
 package ru.shakhin.wscauth.websocket;
 
-import ru.shakhin.wscauth.model.Message;
-import ru.shakhin.wscauth.model.MessageDecoder;
-import ru.shakhin.wscauth.model.MessageEncoder;
+import ru.shakhin.wscauth.model.*;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -15,7 +13,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-@ServerEndpoint(value = "/websocketauthendpoint", encoders = { MessageEncoder.class }, decoders = { MessageDecoder.class })
+@ServerEndpoint(value = "/websocketauthendpoint", encoders = { TokenMessageEncoder.class }, decoders = { TokenMessageDecoder.class })
 public class WebSocketAuth {
     private static Set<Session> peers = Collections.synchronizedSet(new HashSet<Session>());
 
@@ -32,14 +30,26 @@ public class WebSocketAuth {
         peers.remove(peer);
     }
 
-    @OnMessage
-    public void onMessage(Message message, Session session) throws IOException, EncodeException {
-        System.out.println("message: " + message);
-        Message response = new Message();
-        response.setSubject("Response to " + message.getSubject());
-        response.setContent("echo " + message.getContent());
-        session.getBasicRemote().sendObject(response);
+//    @OnMessage
+//    public void onMessage(Message message, Session session) throws IOException, EncodeException {
+//        System.out.println("message: " + message);
+//        Message response = new Message();
+//        response.setSubject("Response to " + message.getSubject());
+//        response.setContent("echo " + message.getContent());
+//        session.getBasicRemote().sendObject(response);
+//
+//        // session.getBasicRemote().sendObject(message);
+//        }
 
-        // session.getBasicRemote().sendObject(message);
-        }
+    @OnMessage
+    public void onMessage(TokenMessage tmessage, Session session) throws IOException, EncodeException {
+        System.out.println("message: " + tmessage);
+
+        //Message response = new Message();
+//        response.setSubject("Response to " + message.getSubject());
+//        response.setContent("echo " + message.getContent());
+        //session.getBasicRemote().sendObject(response);
+
+         session.getBasicRemote().sendObject(tmessage);
+    }
     }

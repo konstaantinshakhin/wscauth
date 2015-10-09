@@ -45,11 +45,15 @@ function onError(evt) {
 }
 
 function send() {
-    var subject = document.getElementById('subject').value;
-    var content = document.getElementById('content').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
     var json = {
-        'subject' : subject,
-        'content' : content
+        'type' : 'LOGIN_CUSTOMER',
+        'sequence_id' : 'sequence_id',
+        'data': {
+            'email':email,
+            'password':password
+            }
     };
     websocket.send(JSON.stringify(json));
     return false;

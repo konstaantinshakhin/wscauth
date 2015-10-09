@@ -4,14 +4,14 @@
 
 <div id="output"></div>
 <div>
-    <span>Subject:</span>
-    <input id="subject" type="text" />
+    <span>email:</span>
+    <input id="email" type="text" />
     <br />
-    <span>Content:</span>
-    <input id="content" type="text" />
+    <span>password:</span>
+    <input id="password" type="text" />
 </div>
 <div>
-    <input type="submit" value="Send message" onclick="send()" />
+    <input type="submit" value="Login" onclick="send()" />
 </div>
 <div id="messages"></div>
 <script type="text/javascript" src="websocket.js"></script>

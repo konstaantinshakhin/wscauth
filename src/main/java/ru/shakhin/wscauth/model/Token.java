@@ -11,9 +11,12 @@ import java.util.UUID;
 public class Token {
     private String token;
     private Date Date;
+    private String email;
     public static void main(String[] args){
-        String uuid = UUID.randomUUID().toString();
-        System.out.println("uuid = " + uuid);
+        for(int i = 0;i<5;i++) {
+            String uuid = UUID.randomUUID().toString();
+            System.out.println("uuid = " + uuid);
+        }
     }
 
 
@@ -31,5 +34,13 @@ public class Token {
 
     public void setDate(Date date) {
         Date = date;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

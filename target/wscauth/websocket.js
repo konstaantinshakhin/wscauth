@@ -32,8 +32,8 @@ function onMessage(event) {
     var json = JSON.parse(event.data);
     document.getElementById('messages').innerHTML
         = '<br />Received server response!'
-        + '<br />Subject: ' + json.subject
-        + '<br />Content: ' + json.content;
+        + '<br />Subject: ' + json.type
+        + '<br />Content: ' + json.sequence_id;
 }
 
 function onOpen() {

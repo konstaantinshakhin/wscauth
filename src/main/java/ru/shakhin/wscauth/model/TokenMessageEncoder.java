@@ -20,13 +20,14 @@ public class TokenMessageEncoder implements Encoder.Text<TokenMessage> {
         Map<String,String> ms = tmessage.getData();
         int i = 0;
         for(Map.Entry<String, String> entry : ms.entrySet()) {
-            name[i] = entry.getValue();
+            name[i] = entry.getKey();
+            i++;
            // Json.createObjectBuilder().add(entry.getKey(), entry.getValue());
         }
         JsonObject jsonObject = Json.createObjectBuilder()
                 .add("type", tmessage.getType())
                 .add("sequence_id", tmessage.getSequenceId())
-                .add("data",Json.createObjectBuilder().add(name[0],ms.get(name[0])).add(name[1],ms.get(name[1]))).build();
+                .add("data",Json.createObjectBuilder().add(name[0],ms.get(name[0])).add(name[1],ms.get(name[1])).build()).build();
         return jsonObject.toString();
     }
 
